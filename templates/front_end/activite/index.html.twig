@@ -1,0 +1,90 @@
+{% extends 'front_end/base.html.twig' %}
+{% block body %}
+    {% for activite in activites %}
+        <!-- Single Restaurent List -->
+        <div class="col-lg-6 col-md-6">
+            <article class="restaurent-box list-style">
+                <div class="row">
+
+                    <div class="col-md-5 col-sm-5">
+                        <div class="restaurent-box-image">
+                            <a href="restaurant-detail.html">
+
+                                <img class="img-responsive
+												restaurent-box-img" src="{{ asset('img/téléchargement.jpg') }}" alt="">
+
+                            </a>
+                            <a href="#" class="list-like left"><i class="ti-heart"></i></a>
+                            <h4 class="restaurent-place">
+                                <a href="#">Activite</a>
+                            </h4>
+                            <span class="featured-tour"><i class="fa fa-star"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7">
+                        <div class="inner-box">
+                            <div class="box-inner-ellipsis">
+                                <div style="margin: 0px; padding: 0px; border: 0px;">
+                                    <div class="entry-content">
+                                        <h3 class="col-md-10 mrg-0 entry-title">
+                                            <a href="restaurant-detail.html">{{ activite.nom }}</a>
+                                        </h3>
+                                        <a onclick="loadDoc()" href="{{ path('Activite_like', {'id':activite.id}) }}"
+                                           class="col-md-2 btn btn-link js-like-link " style="z-index: 1000">
+                                            {% if app.user and activite.isLikedByUser(app.user) %}
+                                                <i class="fa fa-heart"></i>
+                                            {% else %}
+                                                <i class="fa fa-heart-o"></i>
+                                            {% endif %}
+                                            <span class="js-likes">{{ activite.likes | length }} </span>
+                                        </a>
+                                        <span class="price">
+                                                  <p>{{ activite.description }}</p>
+                                        </span>
+                                        <span class="price">
+                                                   <p><b>{{ activite.prixActivite }}$</b> /per person</p>
+                                        </span>
+                                        <span class="type">
+                                                   <p><b>Type d'activite: </b>
+                                            {{ activite.typeActivite }}</p>
+                                        </span>
+                                        <span class="temps">
+                                                   <p><b>Temps nécessaire: </b>{{ activite.temps }}</p>
+                                        </span>
+                                        <span class="Nombre de participant">
+                                                   <b>Nombre de participant: </b>
+                                        {{ activite.nombreParticipant }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="entry-meta">
+                                <div class="meta-item meta-author">
+                                    <div class="hotel-review entry-location">
+                                        <span class="review-status bg-success"><i class="ti-check"></i></span>
+                                        <h6><span class="cl-success font-bold">Good</span>1162 Review</h6>
+                                    </div>
+                                </div>
+                                <div class="meta-item meta-comment fl-right">
+                                    <div class="view-box">
+                                        <div class="fl-right">
+                                            <span><i class="ti-eye padd-r-5"></i>1780</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="meta-item meta-rating fl-right">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    {% endfor %}
+{% endblock %}

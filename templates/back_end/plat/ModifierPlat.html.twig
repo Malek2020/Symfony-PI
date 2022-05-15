@@ -1,0 +1,52 @@
+{% extends 'back_end/base.html.twig' %}
+{% block body %}
+    <div class="tr-single-box">
+        <div class="tr-single-header">
+            <h3 class="dashboard-title">Ajout Plat</h3>
+        </div>
+        <div class="tr-single-body">
+            <fieldset>
+                {{ form_start(form_plat,{attr: {novalidate: 'novalidate'}}) }}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Nom Du Plat</label>
+                        {{ form_widget(form_plat.Nom,{'attr':{ 'class':'form-control','placeholder':'Nom du Plat'}}) }}
+                        {{ form_errors(form_plat.Nom, {'attr':{'class':'text-danger mb-1 '}}) }}
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Type cuisine</label>
+                        {{ form_widget(form_plat.Type_cuisine,{'attr':{ 'class':'form-control','placeholder':'Type cuisine'}}) }}
+                        {{ form_errors(form_plat.Type_cuisine, {'attr':{'class':'text-danger mb-1 '}}) }}
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Description</label>
+                        {{ form_widget(form_plat.Description,{'attr':{ 'class':'form-control','placeholder':' Description'}}) }}
+                        {{ form_errors(form_plat.Description, {'attr':{'class':'text-danger mb-1 '}}) }}
+                    </div>
+                    <div class="col-xs-6">
+                        <label> Prix</label>
+                        {{ form_widget(form_plat.Prix,{'attr':{ 'class':'form-control','placeholder':' Prix'}}) }}
+                        {{ form_errors(form_plat.Prix, {'attr':{'class':'text-danger mb-1 '}}) }}
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <label>Image Plat</label>
+                    <div class="cf-input">
+                        <label class="custom-file">
+                            {{ form_widget(form_plat.Photo,{'attr':{ 'id':'gallery','class':'"custom-file-input'}}) }}
+                            {{ form_errors(form_plat.Photo, {'attr':{'class':'text-danger mb-1 '}}) }}
+                            <span class="custom-file-control"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <label> Liste des restaurants</label>
+                    {{ form_widget(form_plat.Restau,{'attr':{ 'placeholder':' Liste des restaurants'}}) }}
+                </div>
+                <div class="col-xs-12">
+                    {{ form_widget(form_plat.valider,{'attr':{ 'class':'next action-button'}}) }}
+                </div>
+                {{ form_end(form_plat) }}
+        </div>
+    </div>
+{% endblock %}

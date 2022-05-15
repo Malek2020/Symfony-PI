@@ -1,0 +1,58 @@
+{% extends 'front_end/base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {% if guides|length > 0 %}
+        <h2 class="centered">
+            Guides
+        </h2>
+        {% for guide in guides %}
+            <div class="col-md-4 col-md-6">
+                <article class="destination-box style-1">
+                    <div class="destination-box-image">
+                        <figure>
+                            <a href="#">
+                                <img src="{{ asset('/uploads/guide/') }}{{ guide.Photo }}"
+                                     class="img-responsive listing-box-img" alt=""/>
+                                <div class="list-overlay"></div>
+                            </a>
+                            <!-- taux de promosion -->
+                            <div class="container ">
+                                <div class="row"
+                                     style="width: 80%;position: absolute ; bottom: 20px ;color: white ; ">
+                                    <div class="col-md-9">
+                                        <h4 class="destination-place">
+                                            <a href="#" style="color: white ; ">{{ guide.prenom }} {{ guide.nom }}</a>
+                                        </h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="container ">
+                                <div class="row"
+                                     style="width: 80%;position: absolute ;margin-left:260px; bottom: 1px ;color: white ; ">
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="padd-10">
+                                {{ guide.description }}
+                            </h4>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h2 class="centered">
+            Aucun guide
+        </h2>
+    {% endif %}
+{% endblock %}

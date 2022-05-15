@@ -1,0 +1,43 @@
+{% extends 'back_end/base.html.twig' %}
+{% block body %}
+    <div class="tr-single-box">
+        <div class="tr-single-header">
+            <h3 class="dashboard-title">Modifier Restaurant</h3>
+        </div>
+        {{ form_start(form_restaurant,{attr: {novalidate: 'novalidate'}}) }}
+        <div class="col-xs-6">
+            <label>Nom du Restaurant</label>
+            {{ form_widget(form_restaurant.Nom,{'attr':{ 'class':'form-control','placeholder':'Nom du Restaurant'}}) }}
+            {{ form_errors(form_restaurant.Nom, {'attr':{'class':'text-danger mb-1 '}}) }}
+        </div>
+        <div class="col-xs-6">
+            <label>Type</label>
+            {{ form_widget(form_restaurant.Type,{'attr':{ 'class':'form-control','placeholder':'Type'}}) }}
+            {{ form_errors(form_restaurant.Type, {'attr':{'class':'text-danger mb-1 '}}) }}
+        </div>
+        <div class="col-xs-6">
+            <label>Emplacement</label>
+            {{ form_widget(form_restaurant.Emplacement,{'attr':{ 'class':'form-control','placeholder':'Emplacement'}}) }}
+            {{ form_errors(form_restaurant.Emplacement, {'attr':{'class':'text-danger mb-1 '}}) }}
+        </div>
+        <div class="col-xs-6">
+            <label>Image du Restaurant</label>
+            <div class="cf-input">
+                <label class="custom-file">
+                    {{ form_widget(form_restaurant.Photo,{'attr':{ 'id':'gallery','class':'"custom-file-input'}}) }}
+                    {{ form_errors(form_restaurant.Photo, {'attr':{'class':'text-danger mb-1 '}}) }}
+                    <span class="custom-file-control"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label>Description du restaurant</label>
+            {{ form_widget(form_restaurant.Description,{'attr':{ 'class':'form-control height-120','placeholder':'Description du restaurant'}}) }}
+            {{ form_errors(form_restaurant.Description, {'attr':{'class':'text-danger mb-1 '}}) }}
+        </div>
+        <div class="col-xs-12">
+            {{ form_widget(form_restaurant.valider,{'attr':{ 'class':'next action-button'}}) }}
+        </div>
+        {{ form_end(form_restaurant) }}
+    </div>
+{% endblock %}
